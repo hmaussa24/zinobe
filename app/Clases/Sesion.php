@@ -15,10 +15,11 @@ class Sesion{
             }
     }
 
-    public function buscarUsuario($mail,$pwe){
-        $usuario = User::where('email','=',$email)->first();
+    public function buscarUsuario($mail,$pwd){
+        $usuario = User::where('email','=',$mail)->first();
+        print_r($usuario);
         if($usuario){
-            if(validarUser($usuario,$emil,$pwd)){
+            if($this->validarUser($usuario,$mail,$pwd)){
                 $_SESSION['start'] = $usuario;
                 return true;
             }else{

@@ -9,6 +9,12 @@
     
         <div class="row justify-content-center">
             <div class="col-md-8">
+            {% if error is defined %}
+            <div class="alert alert-danger" role="alert">
+              Usuario o contraseña incorrectos
+            </div>
+            {% endif %}
+            
                 <div class="card">
                     <div class="card-header">Login <a href="registrar.php" class="btn btn-secondary float-right" role="button" aria-disabled="true">Registrarme</a></div>
     
