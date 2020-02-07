@@ -2,11 +2,8 @@
 session_start();
 require_once 'vendor/autoload.php';
 
-$loader = new \Twig\Loader\FilesystemLoader('./resource/view/');
+$loader = new \Twig\Loader\FilesystemLoader('./resource/views/');
 $twig = new \Twig\Environment($loader);
 
-if(isset($_SESSION['error'])){
-    echo $twig->render('index.php',['error' => 'error']);
-}
 
-echo $twig->render('home.php');
+    echo $twig->render('app.php');

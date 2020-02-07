@@ -4,8 +4,8 @@ require_once 'vendor/autoload.php';
 
 $loader = new \Twig\Loader\FilesystemLoader('./resource/views/');
 $twig = new \Twig\Environment($loader);
-if($_SESSION['error']){
+if(!empty($_SESSION['error'])){
     echo $twig->render('home.php', ['error' => '401']);
-}else{
+}else{ 
     echo $twig->render('home.php');
 }
