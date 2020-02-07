@@ -26,7 +26,7 @@ class Sesion{
         
         if($usuario){
             if($this->validarUser($usuario,$mail,$pwd)){
-                $_SESSION['start'] = $usuario;
+                $_SESSION['start'] = json_decode($usuario, true);
                 
                 return true;
             }else{

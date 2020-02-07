@@ -4,11 +4,11 @@ class CustomerData{
    private  $curl;
 
    function __construct() {
-    $this->$curl = curl_init();
+    $this->curl = curl_init();
    }
 
    function consultarSisben($documento){
-    curl_setopt_array($curl, array(
+    curl_setopt_array($this->curl, array(
         CURLOPT_URL => "https://api.misdatos.com.co/api/co/sisben/consultarPuntaje",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
@@ -24,13 +24,20 @@ class CustomerData{
         ),
       ));
 
-      $response = curl_exec($curl);
-      curl_close($curl);
-      return $response;
+      //echo $documento;
+
+      if( !$response = curl_exec($this->curl))
+        {
+            trigger_error(curl_error($this->curl));
+        }else{
+          curl_close($this->curl);
+          return $response;
+        }
+        
    }
 
    function consultraConductor($documento){
-    curl_setopt_array($curl, array(
+    curl_setopt_array($this->curl, array(
         CURLOPT_URL => "https://api.misdatos.com.co/api/co/runt/consultarConductor",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
@@ -46,8 +53,12 @@ class CustomerData{
         ),
       ));
       
-      $response = curl_exec($curl);
-      curl_close($curl);
-      return $response;
+      if( !$response = curl_exec($this->curl))
+        {
+            trigger_error(curl_error($this->curl));
+        }else{
+          curl_close($this->curl);
+          return $response;
+        }
    }
 }
