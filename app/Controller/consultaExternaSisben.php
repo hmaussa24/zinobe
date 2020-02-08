@@ -14,7 +14,15 @@ if(!empty( $_SESSION['start'])){
     if($consulta->guardarDbSisben()){
         $datos =  new BuscarDatos();
         $sisben = $datos -> buscarUsuarioSisben($_SESSION['start']['id']);
-        echo json_encode($sisben, JSON_FORCE_OBJECT);
+        if(!empty($sisben)){
+            echo json_encode($sisben, JSON_FORCE_OBJECT);
+        }else{
+            $error = array(
+                "error" => "406"
+            );
+            echo json_encode($error, JSON_FORCE_OBJECT);
+        }
+        
     }else{
         $datos =  new BuscarDatos();
         $sisben = $datos -> buscarUsuarioSisben($_SESSION['start']['id']);

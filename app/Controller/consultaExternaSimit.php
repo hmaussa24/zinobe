@@ -14,7 +14,14 @@ if(!empty( $_SESSION['start'])){
     if($consulta->guardarDbSimit()){
         $datos =  new BuscarDatos();
         $simit = $datos -> buscarUsuarioSimit($_SESSION['start']['id']);
-        echo json_encode($simit, JSON_FORCE_OBJECT);
+        if(!empty($simit)){
+            echo json_encode($simit, JSON_FORCE_OBJECT);
+        }else{
+            $error = array(
+                "error" => "406"
+            );
+            echo json_encode($error, JSON_FORCE_OBJECT);
+        }
     }else{
         $datos =  new BuscarDatos();
         $simit = $datos -> buscarUsuarioSimit($_SESSION['start']['id']);

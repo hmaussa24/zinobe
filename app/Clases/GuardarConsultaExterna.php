@@ -38,7 +38,7 @@ class GuardarConsultaExterna{
        $sisben =  new Sisben();
        $datos = $this->consultraSisben();
        $datosisben = json_decode($datos, true);
-       if(!empty($datosisben) && $datosisben != null){
+       if(!empty($datosisben['data']) && $datosisben != null){
         
         $sisben->puntaje = $datosisben['data']['puntaje'];
         $sisben->departamento = $datosisben['data']['departamento'];
@@ -63,12 +63,22 @@ class GuardarConsultaExterna{
           $simit =  new Simit();
           $datos = $this->consultraSimit();
           $datosimit = json_decode($datos, true);
-          if(!empty($datosimit) && $datosimit != null){
+          print_r($datosimit);
+          if(!empty($datosimit['data']['multa']) && $datosimit != null){
           
           $simit->estado = $datosimit['data']['multa']['estadoPazSalvo'];
-          $simit->numeropaz = $datosimit['data']['multa']['numeroPazSalvo'];
-          $simit->numerocomparendos = $datosimit['data']['multa']['numeroComparendos'];
-          $simit->suspencion = $datosimit['data']['multa']['estadoSuspension'];
+          if($datosimit['data']['multa']['estadoPazSalvo'] == "NO"){
+            $simit->numeropaz = "NO";
+            $simit->numeropaz = "NO";
+            $simit->numerocomparendos = "NO";
+            $simit->suspencion = "NO";
+          }else{
+            $simit->numeropaz = $datosimit['data']['multa']['numeroPazSalvo'];
+            $simit->numeropaz = $datosimit['data']['multa']['numeroPazSalvo'];
+            $simit->numerocomparendos = $datosimit['data']['multa']['numeroComparendos'];
+            $simit->suspencion = $datosimit['data']['multa']['estadoSuspension'];
+          }
+          
           $simit->user_id = $_SESSION['start']['id'];
           $simit->save();
           return true;

@@ -29,7 +29,7 @@
 <div class="container center-block">
 <div class="row " style="margin-top: 25px; margin-left: 25px">
 <div class="card" style="width: 18rem;">
-  <div class="card-header">
+  <div class="card-header" id="sb">
     SISBEN
   </div>
   <ul class="list-group list-group-flush">
@@ -94,12 +94,20 @@ window.onload=function()  {
     type: "GET",
     dataType: 'json'
 	}).done(function(respuesta){
-
+      if(!respuesta){
+        console.log(respuesta);
+        $("#sb").text("SISBEN Datos no encontrados");$("#puntaje").text(respuesta.puntaje);
+      $("#departamento").text("NO");
+      $("#municipio").text("NO");
+      $("#cm").text("NO");
+      }else{
       console.log(respuesta);
       $("#puntaje").text(respuesta.puntaje);
       $("#departamento").text(respuesta.departamento);
       $("#municipio").text(respuesta.municipio);
       $("#cm").text(respuesta.codigomunicipio);
+      }
+      
   });
   
   $.ajax({
