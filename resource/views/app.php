@@ -26,4 +26,63 @@
     </form>
   </div>
 </nav>
+<div class="container ">
+<div class="row " style="margin-top: 25px; margin-left: 25px">
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    SISBEN
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" id="enviar">Puntaje <h6 id="puntaje"></h6></li>
+    <li class="list-group-item">Departamento<h6 id="departamento"></li>
+    <li class="list-group-item">Municipio<h6 id="municipio"></li>
+    <li class="list-group-item">Codigo Municipio<h6 id="cm"></li>
+  </ul>
+</div>
+
+
+<div class="card" style="width: 18rem; margin-left: 25px">
+  <div class="card-header">
+    MULTAS SIMIT
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Paz y Salvo<h6 id="estado"></h6></li>
+    <li class="list-group-item">Numero PAz y Salvo<h6 id="np"></h6></li>
+    <li class="list-group-item">Comparendos<h6 id="comparendos"></h6></li>
+    <li class="list-group-item">Suspendido<h6 id="suspen"></h6></li>
+  </ul>
+</div>
+</div>
+
+</div>
+<script>
+window.onload=function()  {
+
+	$.ajax({
+		url: "app/Controller/consultaExternaSisben.php",
+    type: "GET",
+    dataType: 'json'
+	}).done(function(respuesta){
+
+      console.log(respuesta);
+      $("#puntaje").text(respuesta.puntaje);
+      $("#departamento").text(respuesta.departamento);
+      $("#municipio").text(respuesta.municipio);
+      $("#cm").text(respuesta.codigomunicipio);
+  });
+  
+  $.ajax({
+		url: "app/Controller/consultaExternaSimit.php",
+    type: "GET",
+    dataType: 'json'
+	}).done(function(respuesta){
+
+      console.log(respuesta);
+      $("#estado").text(respuesta.estado);
+      $("#np").text(respuesta.numeropaz);
+      $("#comparendos").text(respuesta.numerocomparendos);
+      $("#suspen").text(respuesta.suspencion);
+	});
+};
+</script>
 {% endblock %}

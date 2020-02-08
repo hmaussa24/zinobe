@@ -11,14 +11,14 @@ if(!empty( $_SESSION['start'])){
     $consulta = new GuardarConsultaExterna();
     $consulta->setDocumento($_SESSION['start']['doc']);
     //print_r($_SESSION['start']['doc']);
-    if($consulta->guardarDbSisben()){
+    if($consulta->guardarDbSimit()){
         $datos =  new BuscarDatos();
-        $sisben = $datos -> buscarUsuarioSisben($_SESSION['start']['id']);
-        echo json_encode($sisben, JSON_FORCE_OBJECT);
+        $simit = $datos -> buscarUsuarioSimit($_SESSION['start']['id']);
+        echo json_encode($simit, JSON_FORCE_OBJECT);
     }else{
         $datos =  new BuscarDatos();
-        $sisben = $datos -> buscarUsuarioSisben($_SESSION['start']['id']);
-        echo json_encode($sisben, JSON_FORCE_OBJECT);
+        $simit = $datos -> buscarUsuarioSimit($_SESSION['start']['id']);
+        echo json_encode($simit, JSON_FORCE_OBJECT);
     }
 }else{
     header("Location: ../../index.php");
