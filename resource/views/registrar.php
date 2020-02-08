@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Registrar <a href="index.php" class="btn btn-secondary float-right" role="button" aria-disabled="true">Login</a></div>
+                <div class="card-header">Registrar <a href="./" class="btn btn-secondary float-right" role="button" aria-disabled="true">Login</a></div>
 
                 <div class="card-body">
                     <form method="POST" action="app/controller/registrar.php">

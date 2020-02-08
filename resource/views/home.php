@@ -16,7 +16,7 @@
             {% endif %}
             
                 <div class="card">
-                    <div class="card-header">Login <a href="registrar.php" class="btn btn-secondary float-right" role="button" aria-disabled="true">Registrarme</a></div>
+                    <div class="card-header">Login <a href="registrar" class="btn btn-secondary float-right" role="button" aria-disabled="true">Registrarme</a></div>
     
                     <div class="card-body">
                         <form method="POST" action="app/controller/login.php">

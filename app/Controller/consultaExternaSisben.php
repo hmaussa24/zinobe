@@ -29,5 +29,5 @@ if(!empty( $_SESSION['start'])){
         echo json_encode($sisben, JSON_FORCE_OBJECT);
     }
 }else{
-    header("Location: ../../index.php");
+    header("Location: ../../");
 }

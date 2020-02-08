@@ -1,0 +1,7 @@
+Options +FollowSymLinks
+RewriteEngine on
+
+RewriteRule ^registrar$ registrar.php
+RewriteRule ^home$ home.php
+RewriteRule ^/$ index.php
+RewriteRule ^login$ index.php

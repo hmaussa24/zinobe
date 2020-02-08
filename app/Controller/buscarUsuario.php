@@ -18,5 +18,5 @@ if(!empty($_SESSION['start'])){
     }
 
 }else{
-    header("Location: ../../index.php");
+    header("Location: ../../");
 }
