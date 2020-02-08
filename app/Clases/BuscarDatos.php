@@ -4,6 +4,7 @@ require '../../config/database.php';
 use Illuminate\Support\Facades\DB;
 use App\entities\Sisben;
 use App\entities\Simit;
+use App\entities\User;
 class BuscarDatos{
 
 
@@ -25,6 +26,12 @@ class BuscarDatos{
         }else{
             return false;
         }
+    }
+
+    public function buscarUsuario($datos){
+        $users = User::where('doc','=', $datos)->first();
+
+        return $users;
     }
 
 

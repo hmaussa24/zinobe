@@ -20,13 +20,13 @@
         <a class="nav-link" href="app/Controller/cerrarsesion.php">Salir </a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+    <form class="form-inline my-2 my-lg-0" action="app/Controller/buscarusuario.php">
+      <input class="form-control mr-sm-2" name="buscar" type="search" placeholder="Buscar" aria-label="Buscar">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
   </div>
 </nav>
-<div class="container ">
+<div class="container center-block">
 <div class="row " style="margin-top: 25px; margin-left: 25px">
 <div class="card" style="width: 18rem;">
   <div class="card-header">
@@ -55,6 +55,7 @@
 </div>
 
 </div>
+
 <script>
 window.onload=function()  {
 
