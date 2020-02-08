@@ -20,7 +20,7 @@
         <a class="nav-link" href="app/Controller/cerrarsesion.php">Salir </a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" action="app/Controller/buscarusuario.php">
+    <form class="form-inline my-2 my-lg-0" action="home.php" method="post">
       <input class="form-control mr-sm-2" name="buscar" type="search" placeholder="Buscar" aria-label="Buscar">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
@@ -52,9 +52,39 @@
     <li class="list-group-item">Suspendido<h6 id="suspen"></h6></li>
   </ul>
 </div>
+
+{% if user is defined %}
+<table class="table"  style="width: 29rem; margin-left: 25px">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Identificacion</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Pais</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{user.nombre}}</td>
+      <td>{{user.doc}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.pais}}</td>
+    </tr>
+  </tbody>
+</table>
+{% elseif erroru is defined %}
+  <div class="alert alert-secondary " style="width: 29rem; margin-left: 25px" role="alert">
+    Usuario no encontrado. Intentelo nuevamente
+  </div>
+{% else %}
+{% endif %}
+
+
 </div>
 
 </div>
+
+
 
 <script>
 window.onload=function()  {
